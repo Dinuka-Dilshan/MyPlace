@@ -1,5 +1,5 @@
-import Card from "../../shared/components/Card";
-import Avatar from "../../shared/components/Avatar";
+import Card from "../../shared/UIcomponents/Card";
+import Avatar from "../../shared/UIcomponents/Avatar";
 import { Link } from "react-router-dom";
 import "./User.css";
 
@@ -22,7 +22,7 @@ const User = (props) => {
               to={`/places/users/${props.id}`}
               className={"text-decoration-none"}
             >
-              {props.placeCount > 1 ? "Places" : "Place"} {props.placeCount}
+              {props.placeCount} {props.placeCount > 1 ? "Places" : "Place"} 
             </Link>
           </div>
         </div>

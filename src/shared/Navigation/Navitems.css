@@ -1,0 +1,45 @@
+.nav-items-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.logo-wrapper {
+  width: 40vw;
+  
+}
+
+.logo {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  color: #005f99;
+  text-decoration: none;
+}
+
+.links {
+  display: none;
+  width: 60vw;
+  justify-content: flex-end;
+  color: #005f99;
+}
+
+.navLink {
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  box-sizing: border-box;
+}
+
+
+.text-decoration-none{
+    text-decoration: none;
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px){
+    .links{
+        display: flex;
+    }
+}

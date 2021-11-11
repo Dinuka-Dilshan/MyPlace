@@ -4,18 +4,19 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import UserList from "./user/pages/UserList";
 import PlaceList from './places/pages/PlaceList';
-import Users from './data';
+import Users from "./user/pages/Users";
+import MainHeader from "./shared/Navigation/MainHeader";
 
 
 
 function App() {
   return (
-    <Router>
+    <Router> 
+      <MainHeader />
       <Switch>
         <Route path="/" exact>
-          <UserList users={Users}/>
+          <Users/>
         </Route>
 
         <Route path="/places" exact>
