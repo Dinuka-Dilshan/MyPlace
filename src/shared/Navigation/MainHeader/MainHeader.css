@@ -1,0 +1,22 @@
+.main-header-wrapper{
+    display: flex;
+}
+
+.main-header-Nav-Item-wrapper{
+    display: none;
+    justify-content: flex-end;
+    align-items: center;
+    width: 80vw;
+}
+
+.main-header-logo-wrapper{
+    width: 20vw;
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px){
+    .main-header-Nav-Item-wrapper{
+        display: flex;
+    }
+}

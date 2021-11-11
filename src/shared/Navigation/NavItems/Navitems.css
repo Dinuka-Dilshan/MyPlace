@@ -1,0 +1,20 @@
+.nav-item-list{
+  list-style-type: none;
+  display: flex;
+  color: #005F99;
+}
+
+.navLink {
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  box-sizing: border-box;
+ 
+}
+
+
+
+
+
+

@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import PlaceList from './places/pages/PlaceList';
 import Users from "./user/pages/Users";
-import MainHeader from "./shared/Navigation/MainHeader";
+import MainHeader from "./shared/Navigation/MainHeader/MainHeader";
 
 
 
