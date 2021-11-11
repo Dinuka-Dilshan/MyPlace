@@ -1,0 +1,31 @@
+.user-wrapper {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #2F86A6;
+}
+
+.name :hover{
+  color: #50CB93;
+}
+
+.placeCount{
+   font-size: 0.8rem;
+   font-weight: 600;
+}
+
+.placeCount :hover{
+  color: #50CB93;
+}
+
+
+.text-decoration-none{
+  text-decoration: none;
+}
+
