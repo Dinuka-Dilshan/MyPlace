@@ -11,18 +11,13 @@
   color: #2F86A6;
 }
 
-.name :hover{
-  color: #50CB93;
-}
 
 .placeCount{
    font-size: 0.8rem;
    font-weight: 600;
 }
 
-.placeCount :hover{
-  color: #50CB93;
-}
+
 
 
 .text-decoration-none{

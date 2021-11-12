@@ -1,6 +1,7 @@
 import React from "react";
-import ReactDOM  from "react-dom";
+import ReactDOM from "react-dom";
 import NavItems from "../NavItems/NavItems";
+import { AnimatePresence, motion } from "framer-motion";
 
 import "./NavDrawer.css";
 
@@ -16,19 +17,32 @@ const listItemStyleOveride = {
 
 const NavDrawer = (props) => {
   const content = (
-    <div className="nav-drawer">
+   
+    <AnimatePresence>
+    <motion.div
+      className="nav-drawer"
+      initial={{ x: "-100vw" }}
+      animate={{ x: 0 }}
+      transition={{ duration: "0.5" }}
+      exit={{
+        x: "-100vw",
+        transition: { duration: "0.5" },
+      }}
+    >
       <div className="nav-drawer-content-wrapper">
         <div className="nav-drawer-content">
           <NavItems
             listStyle={listStyleOveride}
             listItemStyle={listItemStyleOveride}
+            closeNavDrawer={props.closeNavDrawer}
           />
         </div>
       </div>
-    </div>
+    </motion.div>
+    </AnimatePresence>
   );
 
- return ReactDOM.createPortal(content,document.getElementById('drawer'));
+  return ReactDOM.createPortal(content, document.getElementById("drawer"));
 };
 
 export default NavDrawer;

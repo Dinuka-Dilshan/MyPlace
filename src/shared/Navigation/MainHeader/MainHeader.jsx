@@ -8,22 +8,22 @@ import NavDrawer from "../NavDrawer/NavDrawer";
 import BurgerButton from "../BurgerButton/BurgerButton";
 import BackDrop from "../../UIcomponents/BackDrop";
 
-const MainHeader = (props) => {
+const MainHeader = () => {
 
   const [isNavDrawerOpen,setIsNavDrawerOpen] = useState(false);
 
 
-  const openNavDrawer = (props)=>{
+  const openNavDrawer = ()=>{
     setIsNavDrawerOpen(true);
   }
 
-  const closeNavDrawer = (props)=>{
+  const closeNavDrawer = ()=>{
     setIsNavDrawerOpen(false);
   }
 
   return (
     <React.Fragment>
-    {isNavDrawerOpen && <NavDrawer/>}
+    {isNavDrawerOpen && <NavDrawer closeNavDrawer={closeNavDrawer}/>}
     {isNavDrawerOpen && <BackDrop closeNavDrawer={closeNavDrawer}/>}
       <Header>
         <div className="main-header-wrapper">
