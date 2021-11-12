@@ -20,3 +20,14 @@
         display: flex;
     }
 }
+
+
+@media only screen and (max-width: 992px){
+    
+    .main-header-logo-wrapper{
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+}

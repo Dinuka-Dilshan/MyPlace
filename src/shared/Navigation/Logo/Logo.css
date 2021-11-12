@@ -1,12 +1,12 @@
-.logo-wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: fit-content;
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
 }
 
-
-.logo{
-    padding-left: 1rem;
-    color: #005F99;
+.logo {
+  padding-left: 1rem;
+  color: #005f99;
 }
+
