@@ -1,9 +1,12 @@
-import "./NavDrawer.css";
+import React from "react";
+import ReactDOM  from "react-dom";
 import NavItems from "../NavItems/NavItems";
+
+import "./NavDrawer.css";
 
 const listStyleOveride = {
   display: "block",
-  marginLeft: "0"
+  marginLeft: "0",
 };
 
 const listItemStyleOveride = {
@@ -12,7 +15,7 @@ const listItemStyleOveride = {
 };
 
 const NavDrawer = (props) => {
-  return (
+  const content = (
     <div className="nav-drawer">
       <div className="nav-drawer-content-wrapper">
         <div className="nav-drawer-content">
@@ -24,6 +27,8 @@ const NavDrawer = (props) => {
       </div>
     </div>
   );
+
+ return ReactDOM.createPortal(content,document.getElementById('drawer'));
 };
 
 export default NavDrawer;
