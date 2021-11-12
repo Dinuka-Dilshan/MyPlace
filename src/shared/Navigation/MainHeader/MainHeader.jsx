@@ -6,6 +6,7 @@ import "./MainHeader.css";
 import React, { useState } from "react";
 import NavDrawer from "../NavDrawer/NavDrawer";
 import BurgerButton from "../BurgerButton/BurgerButton";
+import BackDrop from "../../UIcomponents/BackDrop";
 
 const MainHeader = (props) => {
 
@@ -23,6 +24,7 @@ const MainHeader = (props) => {
   return (
     <React.Fragment>
     {isNavDrawerOpen && <NavDrawer/>}
+    {isNavDrawerOpen && <BackDrop closeNavDrawer={closeNavDrawer}/>}
       <Header>
         <div className="main-header-wrapper">
           <div className="main-header-logo-wrapper">

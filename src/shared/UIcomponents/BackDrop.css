@@ -1,0 +1,7 @@
+.back-drop {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: saturate(180%) blur(10px);
+  z-index: 10;
+}
