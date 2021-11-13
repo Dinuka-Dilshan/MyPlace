@@ -10,7 +10,7 @@ const BackDrop = props=>{
     }
 
 
-    const content =  <div onClick={clickHandler} className='back-drop'></div>;
+    const content =  <div  onClick={clickHandler} className='back-drop'></div>;
 
     return ReactDom.createPortal(content,document.getElementById('backdrop'));
 }

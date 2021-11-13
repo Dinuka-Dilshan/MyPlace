@@ -21,7 +21,7 @@ const User = (props) => {
           </motion.div>
           <motion.div className="placeCount" whileHover={{scale:1.1,originX:0}}>
             <Link
-              to={`/places/users/${props.id}`}
+              to={`/${props.id}/places`}
               className={"text-decoration-none"}
             >
               {props.placeCount} {props.placeCount > 1 ? "Places" : "Place"} 

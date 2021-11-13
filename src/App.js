@@ -4,23 +4,23 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import PlaceList from './places/pages/PlaceList';
 import Users from "./user/pages/Users";
 import MainHeader from "./shared/Navigation/MainHeader/MainHeader";
-
-
+import UserPlaces from "./places/pages/UserPlaces";
 
 function App() {
   return (
-    <Router> 
+    <Router>
       <MainHeader />
       <Switch>
         <Route path="/" exact>
-          <Users/>
+          <Users />
         </Route>
-
+        <Route path='/:userID/places'>
+          <UserPlaces/>
+        </Route>
         <Route path="/places" exact>
-          <PlaceList />
+          <UserPlaces />
         </Route>
 
         <Redirect to="/" />

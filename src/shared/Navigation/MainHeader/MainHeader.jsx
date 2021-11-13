@@ -23,8 +23,9 @@ const MainHeader = () => {
 
   return (
     <React.Fragment>
-    {isNavDrawerOpen && <NavDrawer closeNavDrawer={closeNavDrawer}/>}
+    
     {isNavDrawerOpen && <BackDrop closeNavDrawer={closeNavDrawer}/>}
+    {isNavDrawerOpen && <NavDrawer closeNavDrawer={closeNavDrawer}/>}
       <Header>
         <div className="main-header-wrapper">
           <div className="main-header-logo-wrapper">

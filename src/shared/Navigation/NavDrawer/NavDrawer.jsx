@@ -26,7 +26,7 @@ const NavDrawer = (props) => {
       transition={{ duration: "0.5" }}
       exit={{
         x: "-100vw",
-        transition: { duration: "0.5" },
+        transition: { delay: 0.7, duration: 1 }
       }}
     >
       <div className="nav-drawer-content-wrapper">
@@ -42,7 +42,7 @@ const NavDrawer = (props) => {
     </AnimatePresence>
   );
 
-  return ReactDOM.createPortal(content, document.getElementById("drawer"));
+  return ReactDOM.createPortal(content, document.getElementById("backdrop"));
 };
 
 export default NavDrawer;

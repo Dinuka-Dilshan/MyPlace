@@ -1,0 +1,46 @@
+.btn {
+  border: none;
+  text-decoration: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(22, 76, 167, 0.6);
+  margin-right: 0.2rem;
+  color: #005f99;
+  min-width: 1rem;
+  border-radius: 0.4rem;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+ 
+}
+
+.btn:hover{
+  background-color: #005f99;
+  color: white;
+  font-weight: 400;
+  animation: fill 0.3s ;
+}
+
+@keyframes fill {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
