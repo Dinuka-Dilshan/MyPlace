@@ -1,0 +1,61 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  display: flex;
+  min-height: 100vh;
+  z-index: 100;
+  width: 100vw;
+  backdrop-filter: saturate(180%) blur(10px);
+  justify-content: center;
+  align-items: center;
+
+}
+
+.modal{
+    width: 85%;
+    min-height: 6rem;
+    max-height: fit-content;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 0.2rem;
+}
+
+.modal-content{
+    color: #212529;
+}
+
+.modal-header-wrapper{
+    color: #212529;
+    border-bottom:1px solid rgba(0,0,0,.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 0.1rem;
+}
+
+.modal-header{
+    width: 80%;
+    padding: 0.2rem;
+}
+
+.close-btn{
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.modal-body{
+    padding: 0.3rem;
+    padding-top: 0.1rem;
+}
+
+
+
+@media only screen and (min-width: 992px) {
+    .modal{
+        width: 50%;
+        min-height: 6rem;
+        max-height: fit-content;
+    }
+  }

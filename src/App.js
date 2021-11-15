@@ -7,6 +7,7 @@ import {
 import Users from "./user/pages/Users";
 import MainHeader from "./shared/Navigation/MainHeader/MainHeader";
 import UserPlaces from "./places/pages/UserPlaces";
+import Modal from "./shared/UIcomponents/Modal";
 
 function App() {
   return (
@@ -21,6 +22,11 @@ function App() {
         </Route>
         <Route path="/places" exact>
           <UserPlaces />
+        </Route>
+        <Route path='/modal'>
+            <Modal header='Modal test Header'>
+              Hello
+            </Modal>
         </Route>
 
         <Redirect to="/" />
