@@ -13,10 +13,11 @@
 
 .modal{
     width: 85%;
-    min-height: 6rem;
+    min-height: 7rem;
     max-height: fit-content;
-    border: 1px solid rgba(0,0,0,.2);
+    border: 1px solid rgba(49, 49, 49, 0.2);
     border-radius: 0.2rem;
+    box-shadow: 0 1px 8px rgba(71, 71, 71, 0.26);
 }
 
 .modal-content{
@@ -35,26 +36,44 @@
 
 .modal-header{
     width: 80%;
-    padding: 0.2rem;
+    padding: 0.5rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    font-weight: 500;
+    color: #005f99;
 }
 
 .close-btn{
     width: 20%;
     display: flex;
     justify-content: flex-end;
+    padding: 0.5rem;
 }
 
 
 .modal-body{
-    padding: 0.3rem;
-    padding-top: 0.1rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
 }
 
-
+button{
+    border: none;
+    background-color: white;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #044c79;
+}
+button:hover{
+    border: none;
+    background-color: white;
+}
 
 @media only screen and (min-width: 992px) {
     .modal{
-        width: 50%;
+        width: 30%;
         min-height: 6rem;
         max-height: fit-content;
     }

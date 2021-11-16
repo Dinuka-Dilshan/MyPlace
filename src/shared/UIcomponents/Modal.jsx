@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion/dist/framer-motion.cjs";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Modal.css";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Modal = (props) => {
 
@@ -20,7 +21,7 @@ const Modal = (props) => {
             {props.header}
         </div>
         <div className='close-btn'>
-            <button onClick={clickHandler}>X</button>
+            <motion.button  whileHover={{scale:1.1}} onClick={clickHandler}><FontAwesomeIcon icon={faTimes}/></motion.button>
         </div>
         </div>
         <div className="modal-body">{props.children}</div>
