@@ -8,10 +8,29 @@ import {
   faMapMarkerAlt,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import Modal from '../../shared/UIcomponents/Modal';
+import Map from '../../shared/UIcomponents/Map';
 
 const PlaceItem = (props) => {
+
+  const [isMapOpen,setIsMapOpen] = useState(false);
+
+
+  const openMapHandler = ()=>{
+    setIsMapOpen(true);
+  }
+
+  const closeMapHandler = ()=>{
+    setIsMapOpen(false);
+  }
+
+
   return (
     <div>
+    {isMapOpen?<Modal header={props.name} onClose={closeMapHandler}>
+      <Map lat={props.location.lat} lng={props.location.lng} zoom={16}/>
+    </Modal>:null}
       <Card styles={{ padding: 0 }}>
         <div className="image-wrapper">
           <img className="image" src={props.image} alt={props.name} />
@@ -27,7 +46,7 @@ const PlaceItem = (props) => {
 
         <div className="btn-wrapper">
           <div className="btn-item">
-            <Button> View On Map </Button>
+            <Button onClick={openMapHandler}> View On Map </Button>
           </div>
           <div className="btn-item">
             <Button>

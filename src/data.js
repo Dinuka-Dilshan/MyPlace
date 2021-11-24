@@ -3,14 +3,14 @@ const UserData = [
         id:1,
         name:'Victoria Predetti',
         image:'https://www.thehindu.com/entertainment/movies/dvdelv/article34674363.ece/ALTERNATES/LANDSCAPE_1200/vic',
-        placeCount:1
+        placeCount:2
     },
 
     {
         id:2,
         name:'kiara advani',
         image:'https://filmfare.wwmindia.com/content/2020/dec/kiaraadvani21606907531.jpg',
-        placeCount:1
+        placeCount:0
     },
 
     {

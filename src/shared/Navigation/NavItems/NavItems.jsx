@@ -21,7 +21,7 @@ const NavItems = (props) => {
         </NavLink>
       </li>
       <li onClick={closeNav} style={props.listItemStyle}>
-        <NavLink className="navLink" to="/places">
+        <NavLink className="navLink" to="/addPlace">
           Add Place
         </NavLink>
       </li>

@@ -7,6 +7,7 @@ import {
 import Users from "./user/pages/Users";
 import MainHeader from "./shared/Navigation/MainHeader/MainHeader";
 import UserPlaces from "./places/pages/UserPlaces";
+import AddPlace from "./places/pages/AddPlace";
 
 function App() {
   return (
@@ -16,14 +17,15 @@ function App() {
         <Route path="/" exact>
           <Users />
         </Route>
-        <Route path='/:userID/places'>
-          <UserPlaces/>
+        <Route path="/:userID/places">
+          <UserPlaces />
         </Route>
         <Route path="/places" exact>
           <UserPlaces />
         </Route>
-        
-
+        <Route path='/addPlace' exact>
+          <AddPlace/>
+        </Route>
         <Redirect to="/" />
       </Switch>
     </Router>

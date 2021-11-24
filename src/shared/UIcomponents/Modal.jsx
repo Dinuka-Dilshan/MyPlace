@@ -1,38 +1,42 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion/dist/framer-motion.cjs";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AnimatePresence, motion } from "framer-motion/dist/framer-motion.cjs";
 import "./Modal.css";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Modal = (props) => {
+  const [isVisible, setIsvisible] = useState(true);
 
-    const [isVisible,setIsvisible] = useState(true);
-
-    const clickHandler=()=>{
-        setIsvisible(false);
+  const clickHandler = () => {
+    setIsvisible(false);
+    if(props.onClose){
+      props.onClose();
     }
+  };
 
-
-    const element = isVisible?<motion.div className="modal-backdrop">
-    <div className="modal">
-      <div className="modal-content">
-        <div className="modal-header-wrapper">
-        <div className='modal-header'>
-            {props.header}
+  const element = isVisible ? (
+    <AnimatePresence>
+    <motion.div className="modal-backdrop" >
+      <motion.div className="modal" initial={{y:-1000}} animate={{y:0}} >
+        <div className="modal-content">
+          <div className="modal-header-wrapper">
+            <div className="modal-header">{props.header}</div>
+          </div>
+          <div className="modal-body">{props.children}</div>
+          <div className="modal-footer">
+            <div className="close-btn">
+              <motion.button  onClick={clickHandler}>
+                close
+              </motion.button>
+            </div>
+          </div>
         </div>
-        <div className='close-btn'>
-            <motion.button  whileHover={{scale:1.1}} onClick={clickHandler}><FontAwesomeIcon icon={faTimes}/></motion.button>
-        </div>
-        </div>
-        <div className="modal-body">{props.children}</div>
-      </div>
-    </div>
-  </motion.div>:<div/>
-
-
-  return (
-      element
+      </motion.div>
+    </motion.div>
+    </AnimatePresence>
+  ) : (
+    <div />
   );
+
+  return element;
 };
 
 export default Modal;

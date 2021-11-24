@@ -3,6 +3,10 @@
 body {
   font-family: "Montserrat", sans-serif;
   margin: 0;
+  -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
 }
 
 .d-flex {
