@@ -26,9 +26,9 @@ const inputReducer = (state, action) => {
 
 const Input = (props) => {
   const [inputState, dispatch] = useReducer(inputReducer, {
-    isValid: false,
+    isValid: props.valid || false,
     isTouched: false,
-    value: " ",
+    value: props.value || " ",
   });
 
   const changeHandler = (event) => {
@@ -55,27 +55,46 @@ const Input = (props) => {
   }, [value, isValid, onInput, id]);
 
   return (
-    <div className="form-control ">
+    <div className="form-control">
       <label
         className={`form-input-label ${
-          !inputState.isValid && inputState.isTouched && "form-input-label-error"
+          !inputState.isValid &&
+          inputState.isTouched &&
+          "form-input-label-error"
         }`}
         htmlFor={props.id}
       >
         {props.text}
       </label>
-      <input
-        className={`form-input ${
-          !inputState.isValid && inputState.isTouched && "form-input-error"
-        }`}
-        type={props.type}
-        id={props.id}
-        name={props.id}
-        placeholder={props.placeholder}
-        onChange={changeHandler}
-        value={inputState.value}
-        onBlur={touchHandler}
-      />
+
+      {props.element === "textarea" ? (
+        <textarea
+          className={`form-input ${
+            !inputState.isValid && inputState.isTouched && "form-input-error"
+          }`}
+          id={props.id}
+          name={props.id}
+          placeholder={props.placeholder}
+          onChange={changeHandler}
+          value={inputState.value}
+          onBlur={touchHandler}
+          rows={props.rows}
+        />
+      ) : (
+        <input
+          className={`form-input h-40 ${
+            !inputState.isValid && inputState.isTouched && "form-input-error"
+          }`}
+          type={props.type}
+          id={props.id}
+          name={props.id}
+          placeholder={props.placeholder}
+          onChange={changeHandler}
+          value={inputState.value}
+          onBlur={touchHandler}
+        />
+      )}
+
       <label
         className={`form-input-message ${
           !inputState.isValid &&

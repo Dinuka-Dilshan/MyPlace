@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import Modal from '../../shared/UIcomponents/Modal';
 import Map from '../../shared/UIcomponents/Map';
+import { NavLink } from "react-router-dom";
 
 const PlaceItem = (props) => {
 
@@ -55,9 +56,11 @@ const PlaceItem = (props) => {
           </div>
           <div className="btn-item"></div>
 
+          <NavLink to={`/places/${props.id}`}>
           <Button>
             <FontAwesomeIcon icon={faEdit} />
           </Button>
+          </NavLink>
         </div>
         </div>
       </Card>

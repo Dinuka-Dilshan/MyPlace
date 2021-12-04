@@ -30,7 +30,7 @@
     box-sizing: border-box;
     border: 1px solid #d7d6db;
     border-radius: 7px;
-    height: 40px;
+    
     margin: 0.2rem 0 0.1rem 0;
     font-size: inherit;
 }
@@ -59,4 +59,14 @@ input:focus {
     display: block;
 }
 
+textarea{
+    
+    font-family: "Montserrat", sans-serif;
+    resize: vertical;
+    
+}
+
+.h-40{
+    height: 40px;
+}
 

@@ -1,4 +1,6 @@
 import { useParams } from "react-router";
+import Button from "../../shared/UIcomponents/Button";
+import Card from "../../shared/UIcomponents/Card";
 import PlaceList from "../components/PlaceList";
 
 const DUMMY_PLACES = [
@@ -34,9 +36,20 @@ const UserPlaces = ()=>{
     const userID = useParams().userID;
     const userPlaceList = DUMMY_PLACES.filter(place=>place.creatorID===userID);
 
-    return(
+    if(userPlaceList.length === 0){
+      return <div>
+        <Card>
+          <div style={{display:'flex', alignItems:'center', justifyContent:'center', fontWeight:'600', paddingBottom:'1rem'}}>No Places To Show</div>
+          <div style={{display:'flex', alignItems:'center', justifyContent:'center',marginBottom:'1rem'}}>Want To Add Some Places?</div>
+          <Button to='/addPlace'>Add</Button>
+        </Card>
+      </div>
+    }else{
+      return(
         <PlaceList placeList={userPlaceList}/>
     )
+    }
+    
 }
 
 export default UserPlaces;
