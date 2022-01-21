@@ -6,11 +6,13 @@ import './BackDrop.css';
 const BackDrop = props=>{
 
     const clickHandler = ()=>{
-        props.closeNavDrawer();
+        props.closeNavDrawer && props.closeNavDrawer();
     }
 
 
-    const content =  <div  onClick={clickHandler} className='back-drop'></div>;
+    const content =  <div  onClick={clickHandler} className='back-drop'>
+        {props.children}
+    </div>;
 
     return ReactDom.createPortal(content,document.getElementById('backdrop'));
 }

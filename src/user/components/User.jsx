@@ -9,7 +9,7 @@ const User = (props) => {
   return (
     <Card>
       <div className="d-flex">
-        <Avatar name={props.name} image={props.image} />
+        <Avatar name={props.name} image={`${process.env.REACT_APP_ASSET_URL}/${props.image}`} />
         <div className="user-wrapper">
           <motion.div className="name" whileHover={{scale:1.1,originX:0}}>
             <Link
@@ -21,7 +21,7 @@ const User = (props) => {
           </motion.div>
           <motion.div className="placeCount" whileHover={{scale:1.1,originX:0}}>
             <Link
-              to={`/${props.id}/places`}
+              to={`/places/user/${props.id}`}
               className={"text-decoration-none"}
             >
               {props.placeCount} {props.placeCount > 1 ? "Places" : "Place"} 

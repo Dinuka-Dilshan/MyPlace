@@ -1,16 +1,17 @@
 import PlaceItem from "./PlaceItem";
+import './PlaceItem.css';
 
 const PlaceList = (props) => {
   return (
-    <div>
+    <div >
       {props.placeList.map((placeItem) => {
         return (
           <PlaceItem
-            key={placeItem.id}
-            id={placeItem.id}
+            key={placeItem._id} 
+            id={placeItem._id}
             name={placeItem.name}
             image={placeItem.image}
-            creatorID={placeItem.creatorID}
+            creatorID={placeItem.createrID}
             location={placeItem.location}
             description={placeItem.description}
             address={placeItem.address}

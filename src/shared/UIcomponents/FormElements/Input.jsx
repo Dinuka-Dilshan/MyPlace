@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import "./Input.css";
 import { validate } from "../../util/validators";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 
 const inputReducer = (state, action) => {
   switch (action.type) {

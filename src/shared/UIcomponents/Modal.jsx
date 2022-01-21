@@ -25,7 +25,7 @@ const Modal = (props) => {
         <motion.div className="modal" initial={{ y: -1000 }} animate={{ y: 0 }}>
           <div className="modal-content">
             <div className="modal-header-wrapper">
-              <div className="modal-header">{props.header}</div>
+              <div className="modal-header" style={props.headerStyle} >{props.header}</div>
             </div>
             <div className="modal-body">{props.children}</div>
             <div className="modal-footer ">
@@ -34,7 +34,7 @@ const Modal = (props) => {
                   <motion.button style={{backgroundColor: '#da2a2a'}} onClick={okBtnclickHandler}>{props.okBtnText||'ok'}</motion.button>
                 </div>}
                 <div className="close-btn">
-                  <motion.button onClick={clickHandler}>close</motion.button>
+                  <motion.button onClick={clickHandler} style={props.closeBtnStyle}>close</motion.button>
                 </div>
               </div>
             </div>

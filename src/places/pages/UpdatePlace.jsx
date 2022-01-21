@@ -3,42 +3,21 @@ import Input from "../../shared/UIcomponents/FormElements/Input";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import Button from "../../shared/UIcomponents/Button";
 import { useForm } from "../../shared/Hooks/form-hook";
-import { useEffect } from "react/cjs/react.development";
-import { useState } from "react";
-import Card from "../../shared/UIcomponents/Card";
-
-const DUMMY_PLACES = [
-  {
-    id: "p1",
-    name: "Akuressa",
-    description:
-      "Akuressa is located in Matara District of the Southern Province. It is located on the Matara–Deniyaya road, approximately 23.6 km from Matara and 39.7 km from Galle. The surrounding areas produce Tea, Coconut, Rubber and agricultural products such as rice.",
-    image: "https://live.staticflickr.com/4623/25959513888_1d95194a68_b.jpg",
-    address: " Matara District,Southern Province,Sri Lanka",
-    location: {
-      lat: 6.1001,
-      lng: 80.476,
-    },
-    creatorID: "1",
-  },
-  {
-    id: "p2",
-    name: "Matara",
-    description:
-      "Matara is a major city in Sri Lanka, on the southern coast of Southern Province. It is the second largest city in Southern Province. It is 160 km from Colombo. It is a major commercial hub, and it is the administrative capital and largest city of Matara District.",
-    image:
-      "https://img.traveltriangle.com/blog/wp-content/uploads/2019/04/Things-To-Do-in-Matara.jpg",
-    address: "Matara District,Southern Province,Sri Lanka",
-    location: {
-      lat: 5.9549,
-      lng: 80.555,
-    },
-    creatorID: "1",
-  },
-];
+import { useEffect } from "react";
+import { useContext, useState } from "react";
+import LoadingSpinner from "../../shared/UIcomponents/LoadingSpinner";
+import { useHistory } from "react-router-dom";
+import React from "react";
+import Modal from "../../shared/UIcomponents/Modal";
+import {AuthContext} from '../../shared/Context/Auth-context';
 
 const UpdatePlace = () => {
   const placeID = useParams().placeID;
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const history = useHistory();
+  const auth = useContext(AuthContext);
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -54,49 +33,112 @@ const UpdatePlace = () => {
     false
   );
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  const selectedPlace = DUMMY_PLACES.find((place) => place.id === placeID);
-
   useEffect(() => {
-    if (selectedPlace) {
-      setFormData(
-        {
-          title: {
-            value: selectedPlace.name,
-            isValid: true,
-          },
-          description: {
-            value: selectedPlace.description,
-            isValid: true,
-          },
-        },
-        true
-      );
-    }
-    setIsLoading(false);
-  }, [setFormData, selectedPlace]);
+    const fetchData = async () => {
+      setIsLoading(true);
 
-  const formSubmitHandler = (event) => {
+      try {
+        const response = await await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/places/${placeID}`,
+          {
+            method: "GET",
+            headers: {
+              "content-type": "application/json",
+            },
+          }
+        );
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        }
+
+        if (response.ok) {
+          setFormData(
+            {
+              title: {
+                value: responseData.place.name,
+                isValid: true,
+              },
+              description: {
+                value: responseData.place.description,
+                isValid: true,
+              },
+            },
+            true
+          );
+
+          setIsLoading(false);
+        }
+      } catch (error) {
+        setIsLoading(false);
+        setError(error.message);
+      }
+    };
+
+    fetchData();
+  }, [placeID, setFormData]);
+
+const clearError = ()=>{
+  setError(null);
+  setIsLoading(false);
+}
+
+  const formSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(formState.inputs);
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/places/${placeID}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({
+            description: formState.inputs.description.value,
+            name: formState.inputs.title.value,
+          }),
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Barer ${auth.token}`,
+          },
+        }
+      );
+
+        if(response.ok){
+           setIsLoading(false);
+           history.push(`/places/user/${auth.userID}`)
+        }else{
+          setIsLoading(false);
+          const responseData = await response.json();
+          throw new Error(responseData.message);
+        }
+
+    } catch (error) {
+      setError(error.message)
+    }
+
+
   };
 
-  if (isLoading) {
+
     return (
-      <div>
-        <div style={{display:'flex', alignItems:'center', justifyContent:'center', fontWeight:'600'}}>Loading...</div>
-      </div>
-    );
-  } else if (!selectedPlace) {
-    return (
-      <Card>
-        <div style={{display:'flex', alignItems:'center', justifyContent:'center', fontWeight:'600'}}>No Such Place Found</div>
-      </Card>
-    );
-  } else {
-    return (
-      <div>
+
+      <React.Fragment>
+
+        {isLoading && <LoadingSpinner />}
+        {error && error && (
+        <Modal
+          header="Error"
+          closeBtnStyle={{ backgroundColor: "#da2a2a" }}
+          headerStyle={{ color: "#da2a2a" }}
+          onClose={clearError}
+        >
+          {error}
+        </Modal>
+      )}
+     { !error && !isLoading && <div>
         <form onSubmit={formSubmitHandler}>
           <Input
             type="text"
@@ -129,9 +171,11 @@ const UpdatePlace = () => {
             UPDATE PLACE
           </Button>
         </form>
-      </div>
+      </div>}
+      </React.Fragment>
+      
     );
   }
-};
+
 
 export default UpdatePlace;

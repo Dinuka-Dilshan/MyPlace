@@ -17,6 +17,7 @@ const Button = (props) => {
   } else {
     return (
       <button
+      type={props.type}
         className="btn"
         disabled={props.disabled}
         style={props.styles}

@@ -15,6 +15,8 @@ const NavItems = (props) => {
     props.closeNavDrawer && props.closeNavDrawer();
   };
 
+ 
+
   return (
     <ul className="nav-item-list" style={props.listStyle}>
       <li onClick={closeNav} style={props.listItemStyle}>
@@ -23,7 +25,7 @@ const NavItems = (props) => {
         </NavLink>
       </li>
       {auth.isLoggedIn && <li onClick={closeNav} style={props.listItemStyle}>
-        <NavLink className="navLink" to={`/places/`}>
+        <NavLink className="navLink" to={`/places/user/${auth.userID}`}>
           My Places
         </NavLink>
       </li>}
@@ -38,7 +40,7 @@ const NavItems = (props) => {
         </NavLink>
       </li>}
       {auth.isLoggedIn && <li onClick={closeNav} style={props.listItemStyle}>
-        <NavLink className="navLink" to="/" onClick={auth.logout}>
+        <NavLink className="navLink" to="/" onClick={auth.logOut}>
           Logout
         </NavLink>
       </li>}

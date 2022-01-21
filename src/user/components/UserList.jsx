@@ -1,6 +1,8 @@
 import User from "./User";
 import Card from "../../shared/UIcomponents/Card";
 
+
+
 const UserList = (props) => {
   return props.users.length === 0 ? (
     <Card>No Users</Card>
@@ -12,7 +14,7 @@ const UserList = (props) => {
           id={user.id}
           image={user.image}
           name={user.name}
-          placeCount={user.placeCount}
+          placeCount={user.places.length}
         />
       );
     })
